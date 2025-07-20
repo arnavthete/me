@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arnav's Core</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    :root {
+      --accent1: #ff6b6b;
+      --accent2: #7b5fff;
+      --accent3: #1dd1a1;
+      --text-light: #f5f5f5;
+      --text-muted: #ccc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460, #53354a);
+      background-size: 800% 800%;
+      animation: gradientBG 20s ease infinite;
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0%   {background-position: 0% 50%;}
+      50%  {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(15,17,22,0.7); backdrop-filter: blur(8px);
+      display: flex; justify-content: center; gap: 30px;
+      padding: 12px 0; z-index: 1000;
+    }
+    nav a {
+      color: var(--text-light); text-decoration: none;
+      font-weight: 600; font-size: 1rem; position: relative;
+    }
+    nav a::after {
+      content: ''; position: absolute; left: 0; bottom: -5px;
+      width: 0; height: 3px; background: var(--accent1);
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after { width: 100%; }
+
+    section {
+      min-height: auto;
+      padding: 40px 8%;
+      display: flex; flex-direction: column; align-items: center;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+
+    #home {
+      text-align: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh;
+      padding-top: 80px;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    #home .core-box {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 25px;
+      padding: 40px 25px;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    #home .logo-main {
+      width: 280px;
+      height: auto;
+      margin-bottom: 15px;
+      animation: logoPulse 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoPulse {
+      from { transform: scale(0.97); }
+      to   { transform: scale(1.03); }
+    }
+
+    #home .core-box p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    #about h2, #projects h2, #contact h2 {
+      font-size: 2rem; margin-bottom: 20px;
+      color: var(--accent1);
+      text-align: center;
+    }
+    #about p {
+      max-width: 600px; color: var(--text-muted);
+      text-align: center; font-size: 1rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 20px; margin-top: 30px;
+      width: 100%;
+    }
+    .project-card {
+      background: #1c1e25;
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    .project-card img {
+      width: 80px; height: auto;
+      margin-bottom: 10px;
+      filter: drop-shadow(0px 0px 5px rgba(255,255,255,0.3));
+    }
+    .project-card h3 { color: var(--accent3); margin-bottom: 8px; font-size: 1.2rem; }
+    .project-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+    #contact p { color: var(--text-muted); margin-bottom: 12px; text-align: center; }
+    #contact a {
+      color: var(--accent1); text-decoration: none;
+      font-size: 1rem; transition: color 0.3s ease;
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 8px;
+    }
+    #contact a:hover { color: var(--accent2); }
+    #contact img {
+      width: 18px; height: 18px;
+    }
+
+    footer {
+      text-align: center; padding: 15px; background: #1c1e25;
+      color: var(--text-muted); font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { gap: 15px; padding: 10px 0; }
+      nav a { font-size: 0.9rem; }
+      #home .logo-main { width: 200px; }
+      #home .core-box { padding: 30px 20px; }
+      #about h2, #projects h2, #contact h2 { font-size: 1.8rem; }
+      .project-card h3 { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <div class="core-box">
+      <img class="logo-main"
+           src="https://raw.githubusercontent.com/papervault/main/refs/heads/main/arnavscorelogo.png"
+           alt="Arnav's Core Logo" />
+      <p>Exploring web development, creativity, and building cool digital stuff — one step at a time.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m Arnav, a passionate learner and web enthusiast. My focus is on experimenting with interactive designs, practical tools, and experiences that combine function and style. “Arnav’s Core” is my little digital lab where I share what I build.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <a class="project-card" href="https://papervault.github.io/vault/" target="_blank">
+        <img src="https://raw.githubusercontent.com/papervault/vault/refs/heads/main/logo.png" alt="Paper Vault Logo">
+        <h3>The Paper Vault</h3>
+        <p>An educational hub for Grade X CBSE students with all study resources in one place.</p>
+      </a>
+      <a class="project-card" href="https://discord.gg/Pyx4M3DxAu" target="_blank">
+        <img src="https://raw.githubusercontent.com/papervault/main/refs/heads/main/image-removebg-preview.png" alt="Omega Logo">
+        <h3>Omega Minecraft Server</h3>
+        <p>Community-driven multiplayer server running since 2022. Nine epic seasons (currently paused).</p>
+      </a>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/papervault/main/refs/heads/main/b0e57eca-e4ed-45b4-9e1e-ea1f3ae8a890.png" alt="Random Password Generator Logo">
+        <h3>Random Password Generator</h3>
+        <p>Generates ultra-strong passwords designed to be nearly uncrackable. Coming soon!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Let’s collaborate or chat!</p>
+    <a href="mailto:arnavog16@gmail.com">Gmail: arnavog16@gmail.com</a><br>
+    <a href="https://instagram.com/darealarnav" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      @darealarnav
+    </a>
+  </section>
+
+  <footer>
+    &copy; 2025 Arnav's Core. Built with passion.
+  </footer>
+
+  <script>
+    const secs = document.querySelectorAll('section');
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.8;
+      secs.forEach(s => {
+        if (s.getBoundingClientRect().top < trigger) {
+          s.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.onload = () => window.scrollTo(0,0);
+  </script>
+</body>
+</html>
