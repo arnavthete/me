@@ -106,6 +106,7 @@
     #about p {
       max-width: 600px; color: var(--text-muted);
       text-align: center; font-size: 1rem;
+      margin-bottom: 50px;
     }
 
     .project-grid {
@@ -113,6 +114,7 @@
       grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
       gap: 20px; margin-top: 30px;
       width: 100%;
+      margin-bottom: 50px;
     }
     .project-card {
       background: #1c1e25;
@@ -139,12 +141,15 @@
     #contact a {
       color: var(--accent1); text-decoration: none;
       font-size: 1rem; transition: color 0.3s ease;
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-bottom: 8px;
+      display: inline-block;
+      margin: 0 10px;
     }
-    #contact a:hover { color: var(--accent2); }
-    #contact img {
-      width: 18px; height: 18px;
+    #contact a img {
+      width: 30px; height: 30px;
+      transition: transform 0.3s ease;
+    }
+    #contact a img:hover {
+      transform: scale(1.1);
     }
 
     footer {
@@ -159,6 +164,7 @@
       #home .core-box { padding: 30px 20px; }
       #about h2, #projects h2, #contact h2 { font-size: 1.8rem; }
       .project-card h3 { font-size: 1rem; }
+      #contact a img { width: 28px; height: 28px; }
     }
   </style>
 </head>
@@ -209,10 +215,14 @@
   <section id="contact">
     <h2>Contact</h2>
     <p>Let’s collaborate or chat!</p>
-    <a href="mailto:arnavog16@gmail.com">arnavog16@gmail.com</a><br>
+    <a href="mailto:arnavog16@gmail.com">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail">
+    </a>
     <a href="https://instagram.com/darealarnav" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      @darealarnav
+    </a>
+    <a href="https://x.com/manlyarnav" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023.svg" alt="Twitter/X">
     </a>
   </section>
 
